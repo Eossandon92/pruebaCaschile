@@ -1,0 +1,89 @@
+# Sistema de Reservas de Salas
+
+Aplicación web para gestionar la reserva de salas de reuniones internas. Permite visualizar las salas disponibles, ver su disponibilidad en tiempo real, agendar reuniones y evitar solapamientos de horario.
+
+---
+
+## Requisitos previos
+
+- Node.js v18 o superior
+- npm
+
+---
+
+## Instalación
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/Eossandon92/pruebaCaschile.git
+cd pruebaCaschile
+```
+
+### 2. Instalar dependencias del backend
+
+```bash
+cd Backend
+npm install
+```
+
+### 3. Instalar dependencias del frontend
+
+```bash
+cd ../Frontend
+npm install
+```
+
+---
+
+## Base de datos
+
+La base de datos se inicializa automáticamente al levantar el servidor por primera vez. Se creará el archivo `database.sqlite` en la carpeta `Backend/` con las tablas y datos semilla incluidos.
+
+Si necesitas reiniciar la base de datos desde cero, elimina el archivo:
+
+```bash
+rm Backend/database.sqlite
+```
+
+---
+
+## Levantar el proyecto
+
+### Backend
+
+```bash
+cd Backend
+node server.js
+```
+
+El servidor quedará corriendo en `http://localhost:3001`
+
+### Frontend
+
+Abre una segunda terminal:
+
+```bash
+cd Frontend
+npm run dev
+```
+
+El frontend quedará disponible en `http://localhost:5173`
+
+---
+
+## Endpoints disponibles
+
+- `GET /api/rooms` — Lista todas las salas
+- `GET /api/rooms/status` — Estado actual de cada sala en tiempo real
+- `POST /api/rooms` — Crea una nueva sala
+- `DELETE /api/rooms/:id` — Elimina una sala y sus reservas asociadas
+- `GET /api/bookings?salaId=X&fecha=YYYY-MM-DD` — Lista reservas de una sala en una fecha
+- `POST /api/bookings` — Crea una nueva reserva con validacion de solapamiento
+- `DELETE /api/bookings/:id` — Elimina una reserva
+
+---
+
+## Autor
+
+Esteban Ossandon
