@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { deleteRoom } from '../api/api';
+import RoomForm from './RoomForm';
 
-function RoomList({ rooms, selectedRoom, onSelectRoom, onRoomDeleted }) {
+function RoomList({ rooms, selectedRoom, onSelectRoom, onRoomDeleted, onRoomUpdated }) {
     const [confirmId, setConfirmId] = useState(null);
+    const [editRoom, setEditRoom] = useState(null);
 
     const handleDelete = async () => {
         const { ok } = await deleteRoom(confirmId);
@@ -24,12 +26,19 @@ function RoomList({ rooms, selectedRoom, onSelectRoom, onRoomDeleted }) {
                                     <p className="font-bold text-sm">{room.nombre}</p>
                                     <p className="text-xs opacity-70">{room.ubicacion} · {room.capacidad} personas</p>
                                 </div>
-                                <i className="ti ti-trash text-error text-sm" onClick={(e) => { e.stopPropagation(); setConfirmId(room.id); }}></i>
+                                <div className="flex gap-2">
+                                    <i className="ti ti-pencil text-sm" onClick={(e) => { e.stopPropagation(); setEditRoom(room); }}></i>
+                                    <i className="ti ti-trash text-error text-sm" onClick={(e) => { e.stopPropagation(); setConfirmId(room.id); }}></i>
+                                </div>
                             </a>
                         </li>
                     ))}
                 </ul>
             </div>
+
+            {editRoom && (
+                <RoomForm room={editRoom} onRoomUpdated={(updated) => { onRoomUpdated(updated); setEditRoom(null); }} onClose={() => setEditRoom(null)} />
+            )}
 
             {confirmId && (
                 <dialog className="modal modal-open">
