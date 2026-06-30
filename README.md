@@ -15,24 +15,24 @@ Aplicación web para gestionar la reserva de salas de reuniones internas. Permit
 
 ### 1. Clonar el repositorio
 
-
+```bash
 git clone https://github.com/Eossandon92/pruebaCaschile.git
 cd pruebaCaschile
-
+```
 
 ### 2. Instalar dependencias del backend
 
-
+```bash
 cd Backend
 npm install
-
+```
 
 ### 3. Instalar dependencias del frontend
 
-
+```bash
 cd ../Frontend
 npm install
-
+```
 
 ---
 
@@ -42,9 +42,9 @@ La base de datos se inicializa automáticamente al levantar el servidor por prim
 
 Si necesitas reiniciar la base de datos desde cero, elimina el archivo:
 
-
+```bash
 rm Backend/database.sqlite
-
+```
 
 ---
 
@@ -52,8 +52,10 @@ rm Backend/database.sqlite
 
 ### Backend
 
+```bash
 cd Backend
 node server.js
+```
 
 El servidor quedará corriendo en `http://localhost:3001`
 
@@ -61,8 +63,10 @@ El servidor quedará corriendo en `http://localhost:3001`
 
 Abre una segunda terminal:
 
+```bash
 cd Frontend
 npm run dev
+```
 
 El frontend quedará disponible en `http://localhost:5173`
 
@@ -100,3 +104,4 @@ El frontend quedará disponible en `http://localhost:5173`
 - `DELETE /api/bookings/:id` — Elimina una reserva
 
 ---
+
